@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 const http = require('http')
 
 const os = require('os');
@@ -13,8 +11,10 @@ const port = 3000;
 
 const server = http.createServer((req, res) => {
   res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('Welcome to IBM Infrastructure Technical Training!\n');
+  res.setHeader('Content-Type', 'application/json');
+  const message = {content: 'Welcome to IBM Infrastructure Technical Training!'};
+  res.write(JSON.stringify(message));
+  res.end();
 });
 
 server.listen(port, hostname, () => {

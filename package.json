@@ -1,7 +1,7 @@
 {
     "name": "sample-linux-on-power-node-app",
     "version": "1.0.0",
-    "description": "A Node.js application written by Upendra Rajan. It is designed to run on IBM Power (on Red Hat Enterprise Linux), and Ansible is used to automate its deployment.",
+    "description": "A sample Node.js application written by Upendra Rajan. It is designed to run on IBM Power (on Red Hat Enterprise Linux), and Ansible is used to automate its deployment.",
     "main": "index.js",
     "scripts": {
       "start": "node index.js"
