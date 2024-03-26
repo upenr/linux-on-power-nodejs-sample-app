@@ -4,7 +4,7 @@ const http = require('http')
 
 const os = require('os');
 const networkInterfaces = os.networkInterfaces();
-const ipAddress = networkInterfaces['eth0'][1].address;
+const ipAddress = networkInterfaces['eth0'][0].address;
 
 const hostname = ipAddress;
 //const hostname = '127.0.0.1';
