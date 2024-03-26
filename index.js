@@ -1,8 +1,11 @@
-const http = require('http');
+#!/usr/bin/env node
+
+const http = require('http')
+const yargs = require ('yargs/helpers') //To test dependency installation worked
 
 const os = require('os');
 const networkInterfaces = os.networkInterfaces();
-const ipAddress = networkInterfaces['eth0'][0].address;
+const ipAddress = networkInterfaces['eth0'][1].address;
 
 const hostname = ipAddress;
 //const hostname = '127.0.0.1';
