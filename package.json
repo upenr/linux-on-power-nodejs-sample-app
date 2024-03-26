@@ -7,8 +7,7 @@
       "start": "node index.js"
     },
     "dependencies": {
-      "http": "",
-      "yargs": ""
+      "http": ""
     }
   }
   

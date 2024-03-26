@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 
 const http = require('http')
-const yargs = require ('yargs/helpers') //To test dependency installation worked
 
 const os = require('os');
 const networkInterfaces = os.networkInterfaces();
