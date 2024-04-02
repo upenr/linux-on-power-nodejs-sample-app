@@ -5,7 +5,6 @@ const networkInterfaces = os.networkInterfaces();
 const ipAddress = networkInterfaces['eth0'][0].address;
 
 const hostname = ipAddress;
-//const hostname = '127.0.0.1';
 
 const port = 3000;
 
