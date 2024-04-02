@@ -8,7 +8,6 @@
     },
     "dependencies": {
       "http": "",
-      "forever": ""
+      "forever": "4.0.3"
     }
   }
-  

@@ -12,8 +12,8 @@ const port = 3000;
 const server = http.createServer((req, res) => {
   res.statusCode = 200;
   res.setHeader('Content-Type', 'application/json');
-  const message = {content: 'Welcome to IBM Infrastructure Technical Training!\n'};
-  res.write(JSON.stringify(message));
+  const message = {content: 'Welcome to IBM Infrastructure Technical Training!'};
+  res.write(JSON.stringify(message) + '\n');
   res.end();
 });
 
