@@ -1,21 +1,22 @@
-const http = require('http')
-
+const http = require('http');
 const os = require('os');
-const networkInterfaces = os.networkInterfaces();
-const ipAddress = networkInterfaces['eth0'][0].address;
-
-const hostname = ipAddress;
 
 const port = 3000;
 
 const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'application/json');
-  const message = {content: 'Welcome to IBM Infrastructure Technical Training!'};
-  res.write(JSON.stringify(message) + '\n');
-  res.end();
+  const response = {
+    status: 'success',
+    message: 'Deployed with Ansible on IBM Power',
+    hostname: os.hostname(),
+    platform: os.platform(),
+    architecture: os.arch(),
+    nodeVersion: process.version
+  };
+
+  res.writeHead(200, {'Content-Type': 'application/json'});
+  res.end(JSON.stringify(response, null, 2) + '\n');
 });
 
-server.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
+server.listen(port, '0.0.0.0', () => {
+  console.log(`Server running on port ${port}`);
 });

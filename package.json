@@ -6,8 +6,5 @@
     "scripts": {
       "start": "node index.js"
     },
-    "dependencies": {
-      "http": "",
-      "forever": "4.0.3"
-    }
+    "dependencies": {}
   }

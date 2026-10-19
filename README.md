@@ -1,61 +1,50 @@
-# Use Ansible to run a Node.js Application on IBM Power (ppc64le)
+# Node.js Application on IBM Power
 
-This is a sample Node.js application that will run on a Linux VM on IBM Power (ppc64le)
+A sample Node.js application deployed with Ansible on Linux on IBM Power.
 
-## Get started using Ansible 💻
+The application returns information about the managed system, including its hostname, platform, processor architecture, and Node.js version.
 
-- Use the following Ansible Playbook to run this application
+## Run locally
 
 ```bash
----
-- name: Run a sample Node.js Application on Linux on IBM Power
-  hosts: <your-hosts>
-  gather_facts: true
-
-  vars:
-    work_dir: '/tmp/linux-on-power-nodejs-sample-app'
-    forever_dir: '/tmp/linux-on-power-nodejs-sample-app/node_modules/forever/bin'
-
-  tasks:
-    - name: Install Node.js
-      package:
-        name: nodejs
-        state: present
-
-    - name: Install Git
-      package:
-        name: git
-        state: present
-
-    - name: Clone repository
-      git:
-        repo: 'https://github.com/upenr/linux-on-power-nodejs-sample-app.git'
-        dest: '{{work_dir}}'
-
-    - name: Install all Node.js dependencies including the Forever package
-      shell: 'npm install'
-      args:
-        chdir: '{{work_dir}}'
-
-    - name: Check list of running Node.js apps using the Forever package
-      command: '{{forever_dir}}/forever list'
-      register: forever_list
-      changed_when: false
-
-    - name: Start our Node.js app using the Forever package
-      command: '{{forever_dir}}/forever start {{work_dir}}/index.js'
-      when: "forever_list.stdout.find('index.js') == -1"
-      args:
-        chdir: '{{work_dir}}'
+npm install
+npm start
 ```
 
-## Package dependencies
+Open another terminal and test the application:
 
+```bash
+curl http://localhost:3000
 ```
-Http
-Forever
+
+## Deploy with Ansible
+
+The course playbook performs the following tasks:
+
+- Installs Node.js and Git
+- Clones this GitHub repository
+- Installs the application dependencies
+- Copies a systemd service file
+- Enables and starts the application
+
+The application runs as the following systemd service:
+
+```text
+qzc51g-nodeapp
 ```
 
-## Enroll in a course that teaches you more Ansible!
+Check its status:
 
-- [Ansible on IBM Power](https://ibm.com/training/course/QZC51G)
+```bash
+systemctl status qzc51g-nodeapp
+```
+
+View its recent logs:
+
+```bash
+journalctl -u qzc51g-nodeapp -n 10 --no-pager
+```
+
+## Course
+
+This application supports the IBM technical training course [QZC51G: Ansible on IBM Power Workshop](https://www.ibm.com/training/course/ansible-on-ibm-power-workshop-QZC51G).
